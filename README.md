@@ -49,11 +49,11 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
 
 ### 3. Modification de nos méthodes dans le `users.controller.js`
   - Tout d'abors il faut ajouter notre repository dans un constructor  
-```
-  constructor(
-  @InjectRepository(User) private userRepository: Repository<User>,
-) {}
-```
+  ```bash
+    constructor(
+    @InjectRepository(User) private userRepository: Repository<User>,
+  ) {}
+  ```
   - Ensuite on va utiliser ce repo et ses méthodes dans notre fichier  
   Exemple pour créer un user :  
 ```bash
