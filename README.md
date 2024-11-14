@@ -49,7 +49,7 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
 
 ### 3. Modification de nos méthodes dans le `users.controller.js`
   - Tout d'abors il faut ajouter notre repository dans un constructor  
-```bash
+```
   constructor(
   @InjectRepository(User) private userRepository: Repository<User>,
 ) {}
@@ -61,7 +61,10 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
 ``` 
   > [!WARNING]
   > Pour notre méthode findOne nous devons ajouter l'id de cette façon :  
-  > `this.userRepository.findOne({where: {id}})`
+  > `this.userRepository.findOne({where: {id}})`  
+
+  > [!NOTE]
+  > Vous pouvez tester vos requêtes **POST** et **PATCH** avec **postman**
 
 ### 4. Modification de nos fichier `dto` pour les méthodes `create` `update`
   - Ajouter les propriétés de votre table et leurs types
