@@ -19,7 +19,7 @@ npm install
 
 ### 2. Création d'une Base de données 
 Créer une base de données dans phpMyAdmin et créer une table users.  
-Ajouter les colonnes `Nom`, `prénom`, `email` et créer un user test. 
+Ajouter les colonnes `Nom`, `prenom`, `email` et créer un user test. 
 
 ### 3. Connexion à la base de données
   - Installation
@@ -32,14 +32,14 @@ npm install @nestjs/config dotenv
 DB_TYPE=mysql
 DB_HOST=localhost
 DB_PORT=3306
-DB_USERNAME=alex
-DB_PASSWORD=alex
-DB_DATABASE=nestjs_testing
+DB_USERNAME=user
+DB_PASSWORD=password
+DB_DATABASE=dbName
 DB_SYNCHRONIZE=true
 ```
 
   - Modifier votre ficher `app.module.ts`
-```bash
+```typescript
 @Module({
   controllers: [AppController],
   providers: [AppService],
