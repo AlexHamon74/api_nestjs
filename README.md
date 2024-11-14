@@ -18,7 +18,7 @@ npm install
 ```
 
 ### 2. Création d'une Base de données 
-Créer une base de données dans phpMyAdmin et créer une table users.  
+Créer une base de données dans phpMyAdmin et créer une table.  
 Ajouter les colonnes `Nom`, `prenom`, `email` et créer un user test. 
 
 ### 3. Connexion à la base de données
@@ -77,7 +77,7 @@ npm run start:dev
 
 ---
 
-## CRUD sur des users 🧑🏼‍💼
+## CRUD sur une Entité 🧑🏼‍💼
 
 ### 1. Génération d'un CRUD pour mon entité
 ```bash
@@ -88,11 +88,31 @@ Modifier notre fichier `app.module.ts`
   - Ajouter votre entité dans la propriété `entities`
   - Ajouter le nouveau module de votre entité
 
-Le fichier `users.controller.ts` contient toutes nos routes pour notre API REST  
-Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `users.controller.ts`...  
-... mais ces méthodes ne sont pas fonctionnelles.
+### 2. Modifier votre fichier `entity.entity.ts`
+```ts
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-### 2. Modification de nos méthodes dans le `users.controller.ts`
+@Entity("entities")
+export class Entity {
+    @PrimaryGeneratedColumn()
+    id:number
+
+    @Column()
+    name: string;
+}
+```
+
+### 3. Modification de notre ficher `entities.module.ts`
+Ajouter cette ligne dans votre @Module
+```ts
+  imports: [TypeOrmModule.forFeature([Entité])]
+```
+
+### 4. Modification de nos méthodes dans le `entities.controller.ts`
+Le fichier `entities.controller.ts` contient toutes nos routes pour notre API REST  
+Le fichier `entities.service.ts` contient nos méthodes utilisés dans le fichier `entities.controller.ts`...  
+... mais ces méthodes ne sont pas fonctionnelles.  
+  
   - Tout d'abors il faut ajouter notre repository dans un constructor  
 ```typescript
   constructor(
@@ -112,7 +132,7 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
   > [!NOTE]
   > Vous pouvez tester vos requêtes **POST** et **PATCH** avec **postman**
 
-### 3. Modification de nos fichiers `dto` pour les méthodes `create` `update`
+### 5. Modification de nos fichiers `dto` pour les méthodes `create` `update`
   - Ajouter les propriétés de votre table et leurs types
 
   - Installation du bundle [class-validator](https://github.com/typestack/class-validator)  
