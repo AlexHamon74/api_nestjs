@@ -28,7 +28,7 @@ npm install @nestjs/config dotenv
 ```
 
   - Créer et modifier de votre fichier `.env.local`
-```bash
+```typescript
 DB_TYPE=mysql
 DB_HOST=localhost
 DB_PORT=3306
@@ -62,7 +62,6 @@ DB_SYNCHRONIZE=true
         synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
       }),
     }),
-
     UsersModule,
   ],
 })
@@ -92,7 +91,7 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
 
 ### 3. Modification de nos méthodes dans le `users.controller.ts`
   - Tout d'abors il faut ajouter notre repository dans un constructor  
-```bash
+```typescript
   constructor(
   @InjectRepository(User) private userRepository: Repository<User>,
 ) {}
@@ -100,7 +99,7 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
 
   - Ensuite on va utiliser ce repo et ses méthodes dans notre fichier  
   Exemple pour créer un user :  
-```bash
+```typescript
     return this.userRepository.save(createUserDto);
 ``` 
   > [!WARNING]
@@ -119,7 +118,7 @@ npm install class-validator --save
 ```
 
   - Ajout des contraintes sur nos champs
-```bash
+```typescript
 import { IsNotEmpty, IsEmail } from 'class-validator';  
 
 export class CreateUserDto {
