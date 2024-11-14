@@ -22,9 +22,13 @@ Créer une base de données dans phpMyAdmin et créer une table users.
 Ajouter les colonnes `Nom`, `prenom`, `email` et créer un user test. 
 
 ### 3. Connexion à la base de données
-  - Installation
+  - Installation du la config
 ```bash
 npm install @nestjs/config dotenv
+```
+  - Installation de l'ORM de NestJs : TypeORM
+```bash
+npm install --save @nestjs/typeorm typeorm mysql2
 ```
 
   - Créer et modifier de votre fichier `.env.local`
@@ -58,11 +62,10 @@ DB_SYNCHRONIZE=true
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
-        entities: [User],
+        entities: [],
         synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
       }),
     }),
-    UsersModule,
   ],
 })
 ```
@@ -76,20 +79,20 @@ npm run start:dev
 
 ## CRUD sur des users 🧑🏼‍💼
 
-### 1. Installation de l'ORM de NestJs : TypeORM
+### 1. Génération d'un CRUD pour mon entité
 ```bash
-npm install --save @nestjs/typeorm typeorm mysql2
-```
-
-### 2. Génération d'un CRUD pour mon entité User
-```bash
-nest g resource users
+nest g resource
 ```  
+
+Modifier notre fichier `app.module.ts`
+  - Ajouter votre entité dans la propriété `entities`
+  - Ajouter le nouveau module de votre entité
+
 Le fichier `users.controller.ts` contient toutes nos routes pour notre API REST  
 Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `users.controller.ts`...  
 ... mais ces méthodes ne sont pas fonctionnelles.
 
-### 3. Modification de nos méthodes dans le `users.controller.ts`
+### 2. Modification de nos méthodes dans le `users.controller.ts`
   - Tout d'abors il faut ajouter notre repository dans un constructor  
 ```typescript
   constructor(
@@ -109,7 +112,7 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
   > [!NOTE]
   > Vous pouvez tester vos requêtes **POST** et **PATCH** avec **postman**
 
-### 4. Modification de nos fichiers `dto` pour les méthodes `create` `update`
+### 3. Modification de nos fichiers `dto` pour les méthodes `create` `update`
   - Ajouter les propriétés de votre table et leurs types
 
   - Installation du bundle [class-validator](https://github.com/typestack/class-validator)  
