@@ -22,8 +22,51 @@ Créer une base de données dans phpMyAdmin et créer une table users.
 Ajouter les colonnes `Nom`, `prénom`, `email` et créer un user test. 
 
 ### 3. Connexion à la base de données
-TODO
+  - Installation
+```bash
+npm install @nestjs/config dotenv
+```
 
+  - Créer et modifier de votre fichier `.env.local`
+```bash
+DB_TYPE=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=alex
+DB_PASSWORD=alex
+DB_DATABASE=nestjs_testing
+DB_SYNCHRONIZE=true
+```
+
+  - Modifier votre ficher `app.module.ts`
+```bash
+@Module({
+  controllers: [AppController],
+  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env.local',
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: configService.get<'mysql'>('DB_TYPE'),
+        host: configService.get<string>('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get<string>('DB_USERNAME'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_DATABASE'),
+        entities: [User],
+        synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
+      }),
+    }),
+
+    UsersModule,
+  ],
+})
+```
 
 ### 4. Lancer le serveur
 ```bash
@@ -43,17 +86,18 @@ npm install --save @nestjs/typeorm typeorm mysql2
 ```bash
 nest g resource users
 ```  
-Le fichier `users.controller.js` contient toutes nos routes pour notre API REST  
-Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `users.controller.js`...  
+Le fichier `users.controller.ts` contient toutes nos routes pour notre API REST  
+Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `users.controller.ts`...  
 ... mais ces méthodes ne sont pas fonctionnelles.
 
-### 3. Modification de nos méthodes dans le `users.controller.js`
+### 3. Modification de nos méthodes dans le `users.controller.ts`
   - Tout d'abors il faut ajouter notre repository dans un constructor  
-  ```bash
-    constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
-  ) {}
-  ```
+```bash
+  constructor(
+  @InjectRepository(User) private userRepository: Repository<User>,
+) {}
+```
+
   - Ensuite on va utiliser ce repo et ses méthodes dans notre fichier  
   Exemple pour créer un user :  
 ```bash
@@ -88,6 +132,3 @@ firstName: string;
 
 ## Conclusion 📌
 TODO
-
-
-
