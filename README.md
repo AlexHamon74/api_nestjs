@@ -76,7 +76,7 @@ npm run start:dev
 
 ## CRUD sur des users 🧑🏼‍💼
 
-### 1. Installtion de l'ORM de NestJs : TypeORM
+### 1. Installation de l'ORM de NestJs : TypeORM
 ```bash
 npm install --save @nestjs/typeorm typeorm mysql2
 ```
@@ -109,7 +109,7 @@ Le fichier `users.service.ts` contient nos méthodes utilisés dans le fichier `
   > [!NOTE]
   > Vous pouvez tester vos requêtes **POST** et **PATCH** avec **postman**
 
-### 4. Modification de nos fichier `dto` pour les méthodes `create` `update`
+### 4. Modification de nos fichiers `dto` pour les méthodes `create` `update`
   - Ajouter les propriétés de votre table et leurs types
 
   - Installation du bundle [class-validator](https://github.com/typestack/class-validator)  
@@ -119,7 +119,7 @@ npm install class-validator --save
 
   - Ajout des contraintes sur nos champs
 ```typescript
-import { IsNotEmpty, IsEmail } from 'class-validator';  
+import { IsNotEmpty } from 'class-validator';  
 
 export class CreateUserDto {
 @IsNotEmpty({ message: 'Le prénom ne peut pas être vide.' })
