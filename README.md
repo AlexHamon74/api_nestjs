@@ -101,6 +101,13 @@ export class Entity {
 }
 ```
 
+  > [!WARNING]
+  > Si l'une de vos colonnes est une date : 
+  > ```
+  > @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  >  deadline: Date;
+  > ```  
+
 ### 4. Modification de notre ficher `entities.module.ts`
 Ajouter cette ligne dans votre @Module
 ```ts
