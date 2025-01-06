@@ -108,13 +108,13 @@ export class Entity {
   >  deadline: Date;
   > ```  
 
-### 4. Modification de notre ficher `entities.module.ts`
+### 4. Modification du ficher `entities.module.ts`
 Ajouter cette ligne dans votre @Module
 ```ts
   imports: [TypeOrmModule.forFeature([Entité])]
 ```
 
-### 5. Modification de nos méthodes dans le `entities.controller.ts`
+### 5. Modification des méthodes dans le fichier `entities.service.ts`
 Le fichier `entities.controller.ts` contient toutes nos routes pour notre API REST  
 Le fichier `entities.service.ts` contient nos méthodes utilisés dans le fichier `entities.controller.ts`...  
 ... mais ces méthodes ne sont pas fonctionnelles.  
