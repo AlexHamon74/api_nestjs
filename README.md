@@ -119,7 +119,7 @@ Le fichier `entities.controller.ts` contient toutes nos routes pour notre API RE
 Le fichier `entities.service.ts` contient nos méthodes utilisés dans le fichier `entities.controller.ts`...  
 ... mais ces méthodes ne sont pas fonctionnelles.  
   
-  - Tout d'abors il faut ajouter notre repository dans un constructor  
+  - Tout d'abors il faut ajouter notre repository dans un constructor à l'intérieur de notre classe
 ```typescript
   constructor(
   @InjectRepository(User) private userRepository: Repository<User>,
