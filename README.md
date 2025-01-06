@@ -39,7 +39,6 @@ DB_PORT=3306
 DB_USERNAME=user
 DB_PASSWORD=password
 DB_DATABASE=dbName
-DB_SYNCHRONIZE=true
 ```
 
   - Modifier votre ficher `app.module.ts`
@@ -63,7 +62,6 @@ DB_SYNCHRONIZE=true
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         entities: [],
-        synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
       }),
     }),
   ],
