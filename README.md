@@ -84,10 +84,10 @@ npm run start:dev
 nest g resource
 ```  
 
-Modification du fichier `app.module.ts`
+### 2. Modification du fichier `app.module.ts`
   - Ajouter votre entité dans la propriété `entities`
 
-### 2. Modifier votre fichier `entity.entity.ts`
+### 3. Modification du fichier `entity.entity.ts`
 ```ts
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
@@ -101,13 +101,13 @@ export class Entity {
 }
 ```
 
-### 3. Modification de notre ficher `entities.module.ts`
+### 4. Modification de notre ficher `entities.module.ts`
 Ajouter cette ligne dans votre @Module
 ```ts
   imports: [TypeOrmModule.forFeature([Entité])]
 ```
 
-### 4. Modification de nos méthodes dans le `entities.controller.ts`
+### 5. Modification de nos méthodes dans le `entities.controller.ts`
 Le fichier `entities.controller.ts` contient toutes nos routes pour notre API REST  
 Le fichier `entities.service.ts` contient nos méthodes utilisés dans le fichier `entities.controller.ts`...  
 ... mais ces méthodes ne sont pas fonctionnelles.  
@@ -131,7 +131,7 @@ Le fichier `entities.service.ts` contient nos méthodes utilisés dans le fichie
   > [!NOTE]
   > Vous pouvez tester vos requêtes **POST** et **PATCH** avec **postman**
 
-### 5. Modification de nos fichiers `dto` pour les méthodes `create` `update`
+### 6. Modification de nos fichiers `dto` pour les méthodes `create` `update`
   - Ajouter les propriétés de votre table et leurs types
 
   - Installation du bundle [class-validator](https://github.com/typestack/class-validator)  
