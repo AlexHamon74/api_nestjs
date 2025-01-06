@@ -84,9 +84,8 @@ npm run start:dev
 nest g resource
 ```  
 
-Modifier notre fichier `app.module.ts`
+Modification du fichier `app.module.ts`
   - Ajouter votre entité dans la propriété `entities`
-  - Ajouter le nouveau module de votre entité
 
 ### 2. Modifier votre fichier `entity.entity.ts`
 ```ts
